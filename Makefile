@@ -17,10 +17,10 @@ $(ROOT)bin/banking: $(OBJECTS)
 	$(CXX) -o $@ $^ $(LIBS)
 
 makedirs: $(ROOT)obj $(ROOT)bin
-	mkdir -p $(ROOT)obj $(ROOT)bin
+	-mkdir -p $(ROOT)obj $(ROOT)bin
 
-# copyconfig: config.cfg
-# 	$(shell cp ./config.cfg ./bin)
+copyconfig: config.cfg
+	$(shell cp ./config.cfg ./bin)
 
 $(ROOT)obj/%.o: $(ROOT)src/%.cpp $(ROOT)include/%.hpp
 	$(CXX) -c $(INC) $(LIBS) $(FLAGS) $< -o $@
