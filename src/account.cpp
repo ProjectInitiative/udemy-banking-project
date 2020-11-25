@@ -16,7 +16,7 @@ void Account::deposit(float amount)
 
 bool Account::withdraw(float amount)
 {
-    if(balance - amount < MIN_BALANCE)
+    if (balance - amount < MIN_BALANCE)        
     {
         throw InsufficientFunds();
         return false;
