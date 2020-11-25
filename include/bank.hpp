@@ -2,6 +2,7 @@
 #define BANK_HPP
 
 #include <string>
+#include <fstream>
 #include <map>
 
 #include "account.hpp"
