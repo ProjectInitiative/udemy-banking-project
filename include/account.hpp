@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-#define MIN_BALANCE 500;
+const int MIN_BALANCE = 500;
 
 class InsufficientFunds{};
 
@@ -27,7 +27,7 @@ class Account
         void deposit(float amount);
         bool withdraw(float amount);
         static void setLastAccountNumber(long accountNumber);
-        static void getLastAccoundNumber();
+        static long getLastAccountNumber();
         friend std::ofstream & operator<<(std::ofstream &ofs, Account &account);
         friend std::ifstream & operator>>(std::ifstream &ifs, Account &account);
         friend std::ostream & operator>>(std::ostream &os, Account &account);

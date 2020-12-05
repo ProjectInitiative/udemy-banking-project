@@ -9,6 +9,26 @@ Account::Account(std::string firstName, std::string lastName, float balance)
     this->balance = balance;
 }
 
+long Account::getAccountNumber()
+{
+    return accountNumber;
+}
+
+std::string Account::getFirstName()
+{
+    return firstName;
+}
+
+std::string Account::getLastName()
+{
+    return lastName;
+}
+
+float Account::getBalance()
+{
+    return balance;
+}
+
 void Account::deposit(float amount)
 {
     balance += amount;
@@ -27,13 +47,14 @@ bool Account::withdraw(float amount)
 
 void Account::setLastAccountNumber(long accountNumber)
 {
-    NextAccountNumber=accountNumber;
+    NextAccountNumber = accountNumber;
 }
 
-long Account::getAccountNumber()
+long Account::getLastAccountNumber()
 {
     return NextAccountNumber;
 }
+
 
 std::ofstream & operator<<(std::ofstream &ofs, Account &account)
 {

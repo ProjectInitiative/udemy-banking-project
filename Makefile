@@ -3,7 +3,7 @@ ROOT=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 CXX=/usr/bin/g++
 CC=gcc
 INC=-I$(ROOT)include
-LIBS=-lconfig++ -lstdc++
+LIBS= -lstdc++
 FLAGS= -w -g
 
 SRC := $(ROOT)src
@@ -16,7 +16,7 @@ compile: | makedirs $(ROOT)bin/banking
 $(ROOT)bin/banking: $(OBJECTS)
 	$(CXX) -o $@ $^ $(LIBS)
 
-makedirs: $(ROOT)obj $(ROOT)bin
+makedirs: $(ROOT)obj/ $(ROOT)bin/
 	-mkdir -p $(ROOT)obj $(ROOT)bin
 
 copyconfig: config.cfg
