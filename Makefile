@@ -8,24 +8,23 @@ FLAGS= -w -g
 
 SRC := $(ROOT)src
 OBJ := $(ROOT)obj
+BIN := $(ROOT)bin
+TARGET := $(BIN)/banking
 SOURCES := $(wildcard $(SRC)/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
 
-compile: | makedirs $(ROOT)bin/banking
+all: | makedirs $(TARGET)
 
-$(ROOT)bin/banking: $(OBJECTS)
-	$(CXX) -o $@ $^ $(LIBS)
+$(TARGET): $(OBJECTS)
+	$(CXX) -o $@ $^
 
-makedirs: $(ROOT)obj/ $(ROOT)bin/
-	-mkdir -p $(ROOT)obj $(ROOT)bin
+$(OBJECTS): $(SOURCES)
+	$(CXX) $(FLAGS) $(LIBS) $(INC) -c $< -o $@
 
-copyconfig: config.cfg
-	$(shell cp ./config.cfg ./bin)
+makedirs:
+	-mkdir -p $(OBJ) $(BIN)
 
-$(ROOT)obj/%.o: $(ROOT)src/%.cpp $(ROOT)include/%.hpp
-	$(CXX) -c $(INC) $(LIBS) $(FLAGS) $< -o $@
-
-.PHONY: clean
+.PHONY: all clean
 
 clean:
-	rm -rf $(ROOT)obj/* $(ROOT)bin/*
+	rm -rf $(BIN) $(OBJ)
